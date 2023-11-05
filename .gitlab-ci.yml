@@ -3,7 +3,7 @@ stages:
   - build
 
 variables:
-  IMAGE_NAME: registry.gitlab.com/gardashaliyeva/devops_task2
+  IMAGE_NAME: gardashaliyeva/devops_task2
   IMAGE_TAG: node_1
 
 test:
