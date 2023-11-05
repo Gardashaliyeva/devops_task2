@@ -26,17 +26,14 @@ build:
     - docker push $IMAGE_NAME:$IMAGE_TAG
 
 deploy:
-  image: docker:latest
   stage: deploy
   before_script:
-    - 'which ssh-agent || ( apk add --update openssh-client )'
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - chmod 400 $SSH_KEY
   script:
-    - ssh localhost@192.168.0.104 "docker pull $IMAGE_NAME:$IMAGE_TAG && docker stop web-app || true && docker rm web-app || true"
-    - ssh localhost@192.168.0.104 "docker run -d --name web-app -p 80:3000 $IMAGE_NAME:$IMAGE_TAG"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY localhost@192.168.0.104 "
+        docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD &&
+        docker ps -aq | xargs docker stop | xargs docker rm &&
+        docker run -d -p 5000:5000 $IMAGE_NAME:$IMAGE_TAG"
   only:
     - main
 
