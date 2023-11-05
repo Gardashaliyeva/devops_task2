@@ -18,4 +18,4 @@ EXPOSE 3000
 
 # Define the command to run your app using CMD which defines your runtime.
 # Here we will use node start to run the server.js file of the app.
-CMD ["node start", "server.js"]
+CMD ["node", "server.js"]
