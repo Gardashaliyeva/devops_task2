@@ -10,12 +10,12 @@ COPY package*.json ./
 # Install any dependencies
 RUN npm install --only=production
 
-# Copy the rest of your app's source code from your host to your image filesystem.
+# Copy the rest of the app's source code from the host to the image filesystem.
 COPY . .
 
 # Inform Docker that the container is listening on the specified port at runtime.
 EXPOSE 3000
 
 # Define the command to run your app using CMD which defines your runtime.
-# Here we will use node to run the server.js file of your app.
-CMD ["node", "server.js"]
+# Here we will use node start to run the server.js file of the app.
+CMD ["node start", "server.js"]
