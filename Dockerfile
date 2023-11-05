@@ -17,5 +17,5 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to run your app using CMD which defines your runtime.
-# Here we will use node to run the index.js file of your app.
-CMD ["node", "app.js"]
+# Here we will use node to run the server.js file of your app.
+CMD ["node", "server.js"]

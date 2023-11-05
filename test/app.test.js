@@ -2,10 +2,10 @@ const request = require('supertest');
 const app = require('../app'); 
 
 describe('GET /', () => {
-  it('responds with Hello World', async () => {
+  it('responds with index.html content', async () => {
     const response = await request(app).get('/');
     expect(response.statusCode).toBe(200);
-    expect(response.text).toBe('Hello World!');
+    expect(response.text).toContain('<h1>Hello World!</h1>'); // Check for a unique piece of the HTML content
   });
 });
 

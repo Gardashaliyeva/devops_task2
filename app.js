@@ -1,8 +1,12 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Simple Hello World route
 app.get('/', (req, res) => {
