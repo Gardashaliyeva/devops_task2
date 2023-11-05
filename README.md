@@ -12,7 +12,7 @@ Here is the webpage:
 
 ![image](https://github.com/Gardashaliyeva/devops_task2/assets/94057319/34a00576-8a61-47a5-9fea-4c57676e46d7)
 
-I have add the application code to this repository.
+I have added the application code to this repository.
 
 ## 2. Dockerizing the Application
 This Dockerfile is a set of instructions for Docker to assemble an image for a containerized application. Here is the content of the Dockerfile for this application:
